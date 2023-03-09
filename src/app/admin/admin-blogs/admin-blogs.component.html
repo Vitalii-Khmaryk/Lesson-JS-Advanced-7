@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="blogs">Blogs</div>
+    <div class="panel">
+        <form >
+        <br>
+        <input type="text" [(ngModel)]="inputTitle" [ngClass]="styl"  name="inputTitle" placeholder="title here...">
+        <br><br>
+        <textarea class="area" [(ngModel)]="inputarea" [ngClass]="styl" name="inputarea" cols="30" rows="10" placeholder="text here..."></textarea>
+        <br><br>
+        <input type="text" [(ngModel)]="inputauthor" [ngClass]="styl" name="inputauthor" placeholder="author here..">
+        <br><br>
+        <button class="addbtn" *ngIf="!hide" (click)="addPost()">Add</button>
+        <button class="saveBtn" *ngIf="hide" (click)="savePost()" >Save edit</button>
+      </form>
+      <br>
+      <div class="panel-container">
+        <table>
+          <thead>
+            <tr>
+                <th class="th1">#</th>
+                <th class="th2">Title</th>
+                <th class="th3">Text</th>
+                <th class="th4">Author</th>
+                <th class="th5">Edit</th>
+                <th class="th6">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let post of posts">
+                <td style="font-weight: bold;">{{post.id}}</td>
+                <td>{{post.title}}</td>
+                <td>{{post.text}}</td>
+                <td>{{post.author}}</td>
+                <div class="d-flex">
+                <button class="EditBtn" (click)="editPost(post)">Edit</button>
+                <button class="DeleteBtn" (click)="deletePost(post)">Delete</button>
+                </div>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
